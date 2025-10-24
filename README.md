@@ -66,7 +66,7 @@ The design emphasizes **throughput, stability, and minimal memory use**, even ac
 ```
 -Roots          [string[]]  # 'C:\','D:\','\\Server\Share'  (required-ish)
 -ThrottleLimit  [int]       # parallel worker count (default 4)
--BaseDir        [string]    # working dir (default: C:\QD\diskScan)
+-BaseDir        [string]    # working dir (default: C:\IT\diskScan)
 -IncludeExt     [string[]]  # optional filter list: 'exe','log',...
 -EchoToConsole  [switch]    # print each path as discovered
 -VerboseErrors  [switch]    # write detailed failures to errors.log

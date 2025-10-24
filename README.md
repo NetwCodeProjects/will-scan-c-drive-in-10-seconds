@@ -24,7 +24,7 @@ small trees favor less threads because of startup overhead.
 
 1,400,000 files (505 GB) try 12 threads even if you have more
 
-1,400,000 files(505 GB) 5 threads was 3 seconds behind 12
+1,400,000 files (505 GB) 5 threads was 3 seconds behind 12
 
 The default 5 is good for most situations I could proably go lower I think If you have a specific worklaod (i'm talking MANY TBs not just 1 ) that need more threads then do it 
 otherwise 5 is fine. 

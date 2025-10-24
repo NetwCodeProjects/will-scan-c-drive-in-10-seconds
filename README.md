@@ -14,12 +14,27 @@ scan local + UNC, only exe files, show progress to console
 ```
 pwsh .\diskScan.ps1 -Roots 'C:\','\\srv\share' -IncludeExt 'exe' -EchoToConsole
 ```
-TIP: Up the -ThrottleLimit (CPU MAX threads) if you want max power
+TIP: Pick the right -ThrottleLimit i did some testing but not a lot.
+
+More threads ≠ faster 
+
+small trees favor less threads because of startup overhead.
+
+20,000 files try 2 threads
+
+1,400,000 files (505 GB) try 12 threads even if you have more
+
+1,400,000 files(505 GB) 5 threads was 3 seconds behind 12
+
+The default 5 is good for most situations I could proably go lower I think If you have a specific worklaod (i'm talking MANY TBs not just 1 ) that need more threads then do it 
+otherwise 5 is fine. 
+
 ```
 .\diskScan-1.0.0.ps1 -ThrottleLimit 20
 ```
 
 ```
+505 GB
 BENCHMARK RESULTS 1,414,001 files on C:\
 
 Stage 1 complete: 24 targets -> C:\IT\diskScan\results\20251023_T191950\targets.csv

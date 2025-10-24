@@ -12,14 +12,14 @@ Defaults:
 Supports multiple mixed roots
 
 Usage:
-pwsh .\diskScan.ps1 -Roots 'C:\','D:\','C:\Users\daylon\Downloads' -EchoToConsole
+pwsh .\diskScan.ps1 -Roots 'C:\','D:\','C:\Users\jamesbond\Downloads' -EchoToConsole
 ============================
 #>
 
 param(
     [string[]]$Roots              = @('C:\'),        # accepts C:\, C:/, \\Server\Share, or any folder
     [int]$ThrottleLimit           = 4,
-    [string]$BaseDir              = 'C:\QD\diskScan',# default work area
+    [string]$BaseDir              = 'C:\IT\diskScan',# default work area
     [string]$TargetFile,                              # derived from BaseDir if not provided
     [string]$OutDir,                                  # derived from BaseDir if not provided
     [string]$TempDir,                                 # derived from BaseDir if not provided
@@ -153,14 +153,14 @@ function Test-UncReachable([string]$Path) {
 # Per-run timestamp folder: YYYYMMDD_THHmmss
 $RunStamp = Get-Date -Format "yyyyMMdd_'T'HHmmss"
 
-# Ensure base dirs exist (C:\QD\diskScan\{results,tmp})
+# Ensure base dirs exist (C:\IT\diskScan\{results,tmp})
 Ensure-Dir $BaseDir
 Ensure-Dir $OutDir
 Ensure-Dir $TempDir
 
 # Per-run subfolders
-$ResultsRunDir = Join-Path $OutDir  $RunStamp     # e.g., C:\QD\diskScan\results\20251023_T141623
-$TempRunDir    = Join-Path $TempDir $RunStamp     # e.g., C:\QD\diskScan\tmp\20251023_T141623
+$ResultsRunDir = Join-Path $OutDir  $RunStamp     # e.g., C:\IT\diskScan\results\20251023_T141623
+$TempRunDir    = Join-Path $TempDir $RunStamp     # e.g., C:\IT\diskScan\tmp\20251023_T141623
 Ensure-Dir $ResultsRunDir
 Ensure-Dir $TempRunDir
 
@@ -382,3 +382,4 @@ if ($VerboseErrors -and (Test-Path -LiteralPath $ErrorLog)) {
 } else {
     Write-Host "Done."
 }
+

@@ -1,6 +1,9 @@
 DiskScan.ps1 — Hyper-perfomance edition
 Two-stage, stream-first disk & UNC scanner (PowerShell 7+)
 =
+
+Results may vary based on total files on disk
+
 # Getting started
 
 real fast scan:
@@ -11,7 +14,19 @@ scan local + UNC, only exe files, show progress to console
 ```
 pwsh .\diskScan.ps1 -Roots 'C:\','\\srv\share' -IncludeExt 'exe' -EchoToConsole
 ```
+TIP: Up the -ThrottleLimit (CPU MAX threads) if you want max power
+```
+.\diskScan-1.0.0.ps1 -ThrottleLimit 20
+```
 
+```
+BENCHMARK RESULTS 1,414,001 files on C:\
+
+Stage 1 complete: 24 targets -> C:\IT\diskScan\results\20251023_T191950\targets.csv
+Stage 2: C:\ -> C:\IT\diskScan\results\20251023_T191950\C.zip (rows: 1414001)
+87.90 s
+DONE.
+```
 ## Overview
 
 `DiskScan.ps1` is a **multi-threaded, two-stage disk scanner** optimized for large-scale file inventorying across local drives and network (UNC) paths.  
